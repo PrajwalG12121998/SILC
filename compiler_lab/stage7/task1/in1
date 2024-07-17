@@ -1,0 +1,181 @@
+
+type
+  bst{
+  int a;
+  bst left;
+  bst right;
+  }
+endtype
+
+decl
+  int in,opt;
+  bst insert(bst h, int key);
+  bst minValueNode(bst node);
+  bst deleteNode(bst root,int key); 
+  int inOrder(bst h); 
+  int preOrder(bst h);
+  int postOrder(bst h);           
+enddecl
+
+bst insert(bst h, int key)
+{
+decl
+enddecl
+
+  begin
+    if (h == null) then
+    h = alloc();
+    h.a = key;
+    h.left = null;
+    h.right = null;
+
+    else if (key < h.a) then
+            h.left  = insert(h.left, key);
+
+         else if (key > h.a) then
+                 h.right = insert(h.right, key);
+              endif;
+          endif;
+    endif;   
+   
+    return h;
+  end
+}
+
+int inOrder(bst h){
+decl
+enddecl
+     
+  begin
+    
+  if(h!=null) then
+     
+    in=inOrder(h.left);
+    write(h.a);
+    in=inOrder(h.right);
+  endif;
+  return 1;
+  end
+}
+
+int preOrder(bst h){
+ decl
+enddecl     
+  begin
+    
+  if(h!=null) then
+    write(h.a);
+    in=preOrder(h.left);
+    
+    in=preOrder(h.right);
+  endif;
+  return 1;
+  end
+}
+
+int postOrder(bst h){
+ decl
+enddecl    
+  begin
+    
+  if(h!=null) then
+    
+    in=postOrder(h.left);
+    
+    in=postOrder(h.right);
+    write(h.a);
+  endif;
+  return 1;
+  end
+}
+
+bst minValueNode(bst node) 
+{ decl
+ bst current;
+ enddecl
+  begin
+    current = node; 
+    while (current.left != null) do 
+        current = current.left; 
+    endwhile;
+  
+    return current;
+  end 
+} 
+  
+bst deleteNode(bst root, int key) 
+{ decl
+  int x;
+  bst temp;
+ enddecl 
+ begin
+    if (root == null) then
+    return root; 
+    endif;
+  
+    if (key < root.a) then 
+        root.left = deleteNode(root.left, key); 
+  
+    else 
+      if (key > root.a) then 
+        root.right = deleteNode(root.right, key); 
+  
+      else
+    
+        
+        if (root.left == null) then 
+         
+            temp = root.right; 
+            x = free(root); 
+            return temp; 
+         
+        else 
+           if (root.right == null) then 
+         
+            temp = root.left; 
+            x = free(root); 
+            return temp;
+           endif;
+        endif; 
+         
+  
+        temp = minValueNode(root.right); 
+ 
+        root.a = temp.a; 
+  
+        root.right = deleteNode(root.right, temp.a); 
+    endif;
+ endif;
+    return root;
+ end 
+} 
+
+int main()
+{ 
+  decl
+  int val,flag,delval;
+  bst Root;
+  enddecl
+
+  begin
+    val = initialize();
+    Root = null;
+
+    read(val);
+
+    while(val!=0) do
+      Root = insert(Root,val);
+      read(val);
+    endwhile;
+    write("Inorder");
+    in = inOrder(Root);
+    read(delval);
+    Root=deleteNode(Root,delval);
+    write("Inorder");
+    in=inOrder(Root);
+     
+  return 9;
+  end
+}
+
+

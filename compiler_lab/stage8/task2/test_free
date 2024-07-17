@@ -1,0 +1,37 @@
+type
+  List
+  {
+    int data;
+    List next;
+  }
+  marklist{
+   int marks;
+   List s;
+  }
+endtype
+
+decl
+    List head;
+enddecl
+
+int main()
+{
+  decl
+    int length,x;
+    List p, q;
+  enddecl
+
+  begin
+    x = initialize();
+    
+    p = alloc();
+    q = alloc();
+    write(p);
+    write(q);
+    x = free(p);
+    p = alloc();
+    write(p);
+
+    return 1;
+  end
+}

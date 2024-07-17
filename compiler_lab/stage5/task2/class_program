@@ -1,0 +1,25 @@
+begin
+decl
+int sum,i,j,k,t,n;
+enddecl
+sum=0;
+i=0;j=0;k=0;
+read(n);
+while(i<n) do
+  j = 0;
+  while(j<n) do
+    k = 0;
+    while(k<n) do
+      read(t);
+      if(t==0) then 
+        break;
+      endif;
+      sum = sum + t;
+      k = k + 1;
+    endwhile;
+   j = j + 1;
+  endwhile;
+ i = i + 1;
+endwhile;
+write(sum);
+end;

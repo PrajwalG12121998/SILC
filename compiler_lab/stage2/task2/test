@@ -1,0 +1,10 @@
+begin
+   read(a);
+   read(b);
+   d = a + 2*b;
+   write(a+d);
+   write(d);
+   read(c);
+   c = b - a;
+   write(c*d);
+end;

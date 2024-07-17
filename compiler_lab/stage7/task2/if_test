@@ -1,0 +1,9 @@
+begin
+decl
+int num1,num2;
+enddecl
+read(num1);
+read(num2);
+if(num1>num2) then write(num1);
+endif;
+end;

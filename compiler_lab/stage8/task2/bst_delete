@@ -1,0 +1,178 @@
+type
+  bst{
+  int a;
+  bst left;
+  bst right;
+  }
+endtype
+
+decl
+  int in,opt;
+  bst insert(bst h, int key);
+  int inOrder(bst h); 
+  int preOrder(bst h);
+  int postOrder(bst h);
+  bst delete(bst h,int key);
+  bst minValueNode(bst node);           
+enddecl
+
+bst insert(bst h, int key)
+{
+  decl
+  enddecl
+  begin
+    if (h == null) then
+    h = alloc();
+    h.a = key;
+    h.left = null;
+    h.right = null;
+
+    else if (key < h.a) then
+            h.left  = insert(h.left, key);
+
+         else if (key > h.a) then
+                 h.right = insert(h.right, key);
+              endif;
+          endif;
+    endif;   
+   
+    return h;
+  end
+}
+
+bst delete(bst h,int key){
+  decl
+  int x;
+  bst temp;
+  enddecl
+  begin
+     if (h==null) then
+        return h;
+     endif;
+
+     if (key < h.a) then
+         h.left = delete(h.left,key);
+     endif;
+
+     if (key > h.a) then
+         h.right = delete(h.right,key);
+     endif;
+     write(h.a);
+     write(key);
+     if(h.a==key) then
+         write("Inside equal");
+         if(h.left==null) then
+            write(h.a);
+            temp = h.right;
+            x = free(h);
+            return temp;
+         endif;
+
+         if(h.right==null) then
+            temp = h.left;
+            x = free(h);
+            return temp;
+         endif;
+
+         temp = minValueNode(h.right);
+
+         h.a = temp.a;
+
+         h.right = delete(h.right,temp.a);
+
+     endif;
+
+   return h;
+  end
+}
+
+bst minValueNode(bst node){
+   decl
+   bst current;
+   enddecl
+   begin
+     current = node;
+
+     while(current.left!=null) do
+        current = current.left;
+     endwhile;
+
+    return current;
+   end 
+}
+
+int inOrder(bst h){
+  decl
+  enddecl   
+  begin
+    
+  if(h!=null) then
+     
+    in=inOrder(h.left);
+    write(h.a);
+    in=inOrder(h.right);
+  endif;
+  return 1;
+  end
+}
+
+int preOrder(bst h){
+  decl
+  enddecl  
+  begin
+    
+  if(h!=null) then
+    write(h.a);
+    in=preOrder(h.left);
+    
+    in=preOrder(h.right);
+  endif;
+  return 1;
+  end
+}
+
+int postOrder(bst h){
+  decl
+  enddecl
+  begin
+    
+  if(h!=null) then
+    
+    in=postOrder(h.left);
+    
+    in=postOrder(h.right);
+    write(h.a);
+  endif;
+  return 1;
+  end
+}
+
+int main()
+{ 
+  decl
+  int val,flag;
+  bst Root;
+  enddecl
+
+  begin
+    val = initialize();
+    Root = null;
+
+    read(val);
+
+    while(val!=0) do
+      Root = insert(Root,val);
+      read(val);
+    endwhile;
+    
+    write("Inorder");
+    in = inOrder(Root);
+    write("delete");
+    val = 6;
+    Root = delete(Root,val);
+    write("Inorder");
+    in = inOrder(Root);
+  return 9;
+  end
+}
+

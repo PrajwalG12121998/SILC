@@ -1,0 +1,7 @@
+begin
+decl
+str mesg;
+enddecl
+mesg = "hello world";
+write(mesg);
+end;

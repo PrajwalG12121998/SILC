@@ -1,0 +1,7 @@
+begin
+decl
+str a;
+enddecl
+read(a);
+write("goodmorning");
+end;

@@ -1,0 +1,15 @@
+begin
+decl
+int num1,num2,num3,A[10],j;
+enddecl
+read(num1);
+read(num2);
+read(num3);
+read(A[1]);
+if ( num1 < num2) then 
+  if( num2 < num3) then write(num3); else write(num2); endif;
+else
+  if( num1 < num3) then write(num3); else write(num1); endif;
+endif;
+write(A[1]);
+end;

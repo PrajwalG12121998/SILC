@@ -1,0 +1,12 @@
+begin
+decl
+int a[5],b;
+enddecl
+while(a!=0) do
+b = b + a;
+read(a);
+endwhile;
+write(b);
+end;
+
+

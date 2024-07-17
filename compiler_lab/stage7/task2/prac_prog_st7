@@ -1,0 +1,49 @@
+class
+Person{
+	decl
+		int name;
+		int age;
+		int printDet();
+		int createPsn(int name, int age);
+	enddecl
+	int printDet(){
+		decl
+		enddecl
+		begin
+			write(self.name);
+			write(self.age);
+			return 1;
+		end
+	}
+	int createPsn(int name, int age){
+		decl
+		enddecl
+		begin
+			self.name=name;
+			self.age=age;
+			return 1;
+		end
+	}
+}
+endclass
+
+decl
+    int n,temp;
+    Person first;
+enddecl
+
+int main()
+{
+  decl
+    int age,temp;
+  enddecl
+
+  begin
+   	first= new(Person);
+   	age = 6;
+	temp = first.createPsn(age, age);
+	temp = first.printDet();
+    return 0;
+  end
+}
+

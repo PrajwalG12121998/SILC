@@ -1,0 +1,13 @@
+begin
+decl
+int a,b,*q,*p;
+enddecl
+read(a);
+read(b);
+p=&a;
+q=&b;
+*p=*q+1;
+write(p);
+write(*p);
+write(a);
+end;
